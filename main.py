@@ -45,4 +45,9 @@ for i in df.standard_value:
 selection = ['molecule_chembl_id','canonical_smiles','standard_value']
 df2=df[selection]
 
-print(df2)
+# print(df2)
+
+bioactivity_class = pd.Series(bioactivity_class, name='bioactivity_class')
+df3 = pd.concat([df2, bioactivity_class], axis=1)
+
+print(df3)
