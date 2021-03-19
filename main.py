@@ -51,3 +51,5 @@ bioactivity_class = pd.Series(bioactivity_class, name='bioactivity_class')
 df3 = pd.concat([df2, bioactivity_class], axis=1)
 
 print(df3)
+
+df3.to_csv('bioactivity_data_preprocessed.csv', index=False)
