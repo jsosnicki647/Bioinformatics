@@ -260,3 +260,24 @@ plt.ylabel('NumHAcceptors', fontsize=14, fontweight='bold')
 plt.savefig('plot_NumHAcceptors.pdf')
 
 print(mannwhitney('NumHAcceptors'))
+
+df4=pd.read_csv('acetylcholinesterase_04_bioactivity_data_3class_pIC50.csv')
+print(df4)
+
+selection = ['canonical_smiles','molecule_chembl_id']
+df4_selection = df4[selection]
+df4_selection.to_csv('molecule.smi', sep='\t', index=False, header=False)
+
+df4_X = pd.read_csv('./descriptors_output.csv')
+# print(df4_X)
+
+df4_X = df4_X.drop(columns=['Name'])
+# print(df4_X)
+
+df4_Y = df4['pIC50']
+# print(df4_Y)
+
+dataset4 = pd.concat([df4_X, df4_Y], axis=1)
+print(dataset4)
+
+dataset4.to_csv('acetylcholinesterase_06_bioactivity_data_3class_pIC50_pubchem_fp.csv', index=False)
